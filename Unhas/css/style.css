@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", "sans-serif";
+}
+
+ul {
+  list-style: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #444;
+  transition: 0.5s;
+}
+
+a:hover {
+  color: #ffa7f0;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  background-color: #fff;
+  border-bottom: 2px solid #ff7070;
+  padding: 1rem 1rem;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: #ffa7f0;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: 0.8s;
+}
+
+.nav-links a:hover {
+  color: #ff8d8d;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ffa7f0;
+  margin-right: 2rem;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  color: #ffa7f0;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.8s;
+  font-size: 1rem;
+}
+
+button:hover {
+  color: #ff8d8d;
+}
+
+.dropdown {
+  text-decoration: none;
+  position: relative;
+  margin-right: 4rem;
+  border: none;
+}
+
+.dropbtn{
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  color: #ffa7f0;
+  background-color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  right: 12px;
+}
+
+.dropdown-content li {
+  padding: 0.5rem;
+}
+
+.dropdown-content a {
+  color: #ffa7f0;
+  text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 79px;
+  }
+  .nav-links.show {
+    display: flex;
+    left: 50%;
+    width: 50%;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .dropdown-content {
+    left: 12px;
+    width: 10rem;
+    height: 9rem;
+  }
+
+}
+
+/* Logo */
+.logo img {
+  margin-left: 2rem;
+  height: 2.5rem;
+  width: auto;
+}
+
+/* Banner principal */
+.banner-container {
+  margin-top: 3.5rem;
+  background-image: url(/ProjetosVscode/Unhas/img/capa.png);
+  height: 20rem;
+  background-size: cover;
+  background-position: center;
+  padding: 1rem 0;
+}
+
+.banner-container p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #850707;
+  padding: 12px auto;
+  margin-top: 18rem;
+  text-decoration: underline;
+}
+
+/* Conteudo Principal */
+.container {
+  display: flex;
+  padding: 1.5rem 2.5rem;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#post-container {
+  flex: 5 5 0;
+}
+
+#post {
+  margin-bottom: 2.5rem;
+}
+
+#post img {
+  background-color: #ff7070;
+  border-radius: 15px;
+  margin-left: -5px;
+  width: 40rem;
+  height: 30rem;
+  margin-bottom: 1rem;
+}
+
+#tittle,
+.descript {
+  margin-bottom: 1.5rem;
+}
+
+.descript {
+  line-height: 1.5rem;
+}
+
+#tittle {
+  font-size: 2rem;
+  color: #850707;
+}
+
+.container #post a {
+  color: #850707;
+  font-size: 1rem;
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.container #post a:hover {
+  cursor: pointer;
+  color: #ffa7a7;
+}
+
+/* barra lateral */
+.sidebar {
+  flex: 1 1 0;
+}
+
+/* Autor */
+
+.tittel h4 {
+  background: linear-gradient(135deg, #ffa7a7, #ff6060);
+  padding: 0.3rem 0.3rem; /* Aumenta o espaçamento */
+  text-align: center;
+  color: #fff; /* Muda a cor do texto para branco para mais contraste */
+  font-family: "Arial", sans-serif; /* Escolhe uma fonte limpa e moderna */
+  font-size: 1.8rem; /* Aumenta o tamanho da fonte */
+  letter-spacing: 1px; /* Adiciona espaçamento entre letras */
+  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra para dar profundidade */
+  border-radius: 12px; /* Arredonda os cantos */
+  border: 2px solid #ff8d8d; /* Adiciona uma borda fina e elegante */
+  transition: all 0.3s ease-in-out; /* Cria uma transição suave para interações */
+  cursor: pointer; /* Dá a sensação de clicável */
+}
+
+.tittel h4:hover {
+  background: linear-gradient(
+    135deg,
+    #ff6060,
+    #ffa7a7
+  ); /* Inverte o gradiente ao passar o mouse */
+  transform: scale(1.05); /* Aumenta ligeiramente o elemento */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta a profundidade da sombra */
+}
+
+.author {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  flex-direction: column; /* Caso tenha texto ou mais elementos abaixo */
+  flex: auto;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  background-color: #ddd;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  width: 20rem;
+  height: 20rem;
+}
+
+.author img {
+  background-color: #ff6060;
+  border-radius: 50%;
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover; /* Garante que a imagem não fique distorcida */
+  margin: 0 auto; /* Adiciona margem automática para centralizar em casos específicos */
+  display: block; /* Remove possíveis comportamentos inline */
+}
+
+.descricao {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  line-height: 24px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Garante altura total da viewport */
+}
+
+.btn {
+  position: relative;
+  bottom: 15px;
+  width: 50%;
+  padding: 3%;
+  border: 2px solid #ffa7a7;
+  border-radius: 50px;
+  font-size: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ffa7a7, #ff6060);
+  box-shadow: -2px 3px 0 #ff6060, -4px 6px 0 #ff8d8d;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #ff6060, #ffa7a7);
+  box-shadow: inset -4px 4px 0 #ffa7a7;
+  border: 2px solid #ff6060;
+  font-size: 14px;
+}
+
+/* aplicação */
+#side {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+}
+
+#side h4 {
+  padding: 0.5rem 2rem;
+  width: 150px;
+  margin-left: 40px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffa7a7, #ff6060);
+  border-radius: 5rem;
+  font-size: 20px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+#side h4:hover{
+  background: linear-gradient(
+    135deg,
+    #ff6060,
+    #ffa7a7
+  ); 
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.aplic {
+  line-height: 2rem;
+}
+
+
+/* Footer */
+footer {
+  border-top: 2px solid #ff8d8d;
+}
+
+footer .ns{
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+  margin-left: 48%;
+}
+
+footer p {
+  text-align: center;
+}

@@ -1,131 +1,81 @@
+import tkinter as tk
 from collections import deque
+import time
 
-# lista, tupla, Sets
-lista = [1, 2, 3]
+class Visualizador:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Visualizador de Algoritmos")
 
-tupla =(4, 5, 6)
+        self.frame = tk.Frame(root)
+        self.frame.pack(pady=20)
 
-conjunto = {7, 8, 9}
+        self.status = tk.Label(root, text="Selecione um algoritmo", font=("Arial", 12))
+        self.status.pack(pady=10)
 
-# dicionario (Hashmap)
-dicionario = {'a':1, 'b':2}
+        self.bubble_button = tk.Button(root, text="Bubble Sort", command=self.visualizar_bubble)
+        self.bubble_button.pack(pady=5)
 
-# pilha (list)
-pilha = []
+        self.bfs_button = tk.Button(root, text="Busca em Largura (BFS)", command=self.visualizar_bfs)
+        self.bfs_button.pack(pady=5)
 
-pilha.append(11)
+    def desenhar_lista(self, lista, destaque=-1):
+        for widget in self.frame.winfo_children():
+            widget.destroy()
+        for i, val in enumerate(lista):
+            bg = "#90cdf4" if i == destaque or i == destaque + 1 else "#e0e0e0"
+            lbl = tk.Label(self.frame, text=str(val), width=4, height=2, bg=bg, relief="solid", font=("Arial", 14))
+            lbl.pack(side=tk.LEFT, padx=5)
+        self.root.update()
 
-pilha.pop()
+    def visualizar_bubble(self):
+        lista = [5, 3, 8, 1, 4]
+        n = len(lista)
+        self.status.config(text="Executando Bubble Sort")
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                self.desenhar_lista(lista, j)
+                self.root.after(300)
+                if lista[j] > lista[j + 1]:
+                    lista[j], lista[j + 1] = lista[j + 1], lista[j]
+                self.root.update()
+                time.sleep(0.3)
+        self.status.config(text="Bubble Sort finalizado")
 
-# fila (deque)
-fila = deque()
+    def desenhar_grafo(self, visitados):
+        for widget in self.frame.winfo_children():
+            widget.destroy()
+        for no in ['A', 'B', 'C', 'D']:
+            bg = "#9ae6b4" if no in visitados else "#f0f0f0"
+            lbl = tk.Label(self.frame, text=no, width=4, height=2, bg=bg, relief="groove", font=("Arial", 14))
+            lbl.pack(side=tk.LEFT, padx=10)
+        self.root.update()
 
-fila.append(11)
+    def visualizar_bfs(self):
+        grafo = {
+            'A': ['B', 'C'],
+            'B': ['A', 'D'],
+            'C': ['A', 'D'],
+            'D': ['B', 'C']
+        }
+        fila = deque(['A'])
+        visitados = set()
+        self.status.config(text="Executando BFS")
 
-fila.popleft()
+        def visitar():
+            if not fila:
+                self.status.config(text="BFS finalizado")
+                return
+            vertice = fila.popleft()
+            if vertice not in visitados:
+                visitados.add(vertice)
+                self.desenhar_grafo(visitados)
+                fila.extend(grafo[vertice])
+                self.root.after(600, visitar)
 
-# Árvore com dicionários
+        visitar()
 
-arvore = {
-    'valor': 1,
-    'esquerda': {'valor':2, 'esquerda': None, 'direira': None},
-    'direira': {'valor': 3, 'esquerda': None, 'direira': None}
-}
-
-# Grafico com lista deadjacência
-
-grafo = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D'],
-    'C': ['A', 'D'],
-    'D': ['B', 'C']
-}
-
-# Busca Binária
-def busca_binaria(arr, alvo):
-    innicio, fim = 0, len(arr) -1
-    while inicio <= fim:
-        meio = (inicio + fim) // 2
-        if arr[meio] == alvo:
-            return meio
-        elif arr[meio] < alvo:
-            innicio = meio + 1
-        else:
-            fim = meio - 1
-    return -1
-
-
-# Bubble Sort
-def bubble_sort(arr):
-    for i in range(len(arr)):
-        for j in range(0, len(arr) - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-
-
-# Insertion Sort
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        chave = arr[i]
-        j = i - 1
-        while j >= 0 and chave < arr[j]:
-            arr[j + 1] = arr[j]
-        arr[j + 1] = chave
-
-
-# Merge Sort
-def marge_sort(arr):
-    if len(arr) > 1 :
-        meio = len(arr) // 2
-        esq = arr[:meio]
-        dir = arr[meio:]
-
-        marge_sort(esq)
-        marge_sort(dir)
-
-        i = j = k = 0
-        while i < len(esq) and j < len(dir):
-            if esq[i] < dir[j]:
-                arr[i] = esq[i]
-                i += 1
-            else:
-                arr[k] = dir[j]
-                j += 1
-            k += 1 
-        while i < len(esq):
-            arr[k] = esq[i]
-            j += 1
-            k += 1
-# Recursão simples
-def fatorial(n):
-    return 1 if n <= 1 else n * fatorial(n - 1)
-
-# DFS
-def dfs(grafo, inicio, visitado=None):
-    if visitado is None:
-        visitado = set()
-    visitado.add(inicio)
-    for vizinho in grafo[inicio]:
-        if vizinho not in visitado:
-            dfs(grafo, vizinho, visitado)
-    return visitado
-
-# BFS
-def bfs(grafo, inicio):
-    visitado = set()
-    fila = deque([inicio])
-    while fila:
-        vertice = fila.popleft()
-        if vertice not in visitado:
-            visitado.add(vertice)
-            fila.extend(grafo[vertice])
-    return visitado
-
-# Greedy: troco mínimo
-def troco_minimo(valor, moedas=[100, 50, 25, 10, 5, 1]):
-    resultado = []
-    for moeda in moedas:
-        while valor >= moeda:
-            valor -= moeda
-            resultado.append(moeda)
-    return resultado
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Visualizador(root)
+    root.mainloop()

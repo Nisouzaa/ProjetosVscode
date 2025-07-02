@@ -9,6 +9,7 @@ const grafo = {
   C: ["A", "D"],
   D: ["B", "C"]
 };
+
 let visitados = [];
 
 function renderArray() {

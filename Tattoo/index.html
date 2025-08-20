@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatto</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./Js/script.js" defer></script>
+
+    <!-- incones -->
+
+
+
+</head>
+
+<body>
+    <header>
+        <h1 id="logo"><img src="./img/B-P-20-08-2025.png" alt="Logo">Studio Tattoo</h1>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#home">Início</a>
+                <a href="#services">Serviços</a>
+                <a href="#cadastro">Cadastro</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="titulo">
+            <h2>Arte na Pele</h2>
+            <p>Transformando sua história em tatuagem.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Nossos Serviços</h2>
+        <div class="service-card">
+            <h3>Tatuagens Minimalistas</h3>
+            <p>Pequenos detalhes que carregam grandes significados.</p>
+        </div>
+        <div class="service-card">
+            <h3>Realismo</h3>
+            <p>Retratos e artes detalhadas com perfeição.</p>
+        </div>
+        <div class="service-card">
+            <h3>Old School</h3>
+            <p>O clássico estilo que nunca sai de moda.</p>
+        </div>
+    </section>
+
+    <section id="cadastro">
+        <h2>Cadastro de Clientes</h2>
+        <form id="cadastroForm">
+            <input type="text" id="nome" placeholder="Nome completo" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="tel" id="telefone" placeholder="Telefone" required>
+            <textarea id="mensagem" rows="4" placeholder="Escreva sua ideia de tatuagem"></textarea>
+            <button type="submit">Enviar Cadastro</button>
+        </form>
+        <p id="msg-sucesso">Cadastro enviado com sucesso!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Studio Tattoo - Todos os direitos reservados.</p>
+    </footer>
+
+
+</body>
+
+</html>

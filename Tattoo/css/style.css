@@ -27,21 +27,27 @@ header {
 header h1 {
   color: red;
   font-size: 1.5rem;
-  margin-left: -1rem auto;
-  gap: 15rem;
+  margin: 0;
 }
 
 #logo img {
-  margin-left: 2rem;
+  margin-left: 1rem;
   height: 2.5rem;
-  width: auto;
-  align-items: center;
-  justify-content: center;
+  width: 120px;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+#logo img:hover {
+  transform: scale(1.1) rotate(-3deg); /* cresce e gira levemente */
+  opacity: 0.9;
+}
+
+/* Navis */
 nav {
   display: flex;
-  gap: 1.5rem;
+  margin-right: 15px;
+  gap: 1rem;
 }
 
 nav a {
@@ -49,11 +55,13 @@ nav a {
   text-decoration: none;
   transition: 0.3s;
   padding: 12px;
+  border-radius: 10px;
 }
 
 nav a:hover {
   color: crimson;
 }
+
 
 /* Menu hamburguer */
 .hamburger {
@@ -84,6 +92,7 @@ nav a:hover {
     right: 0;
     width: 200px;
     padding: 1rem;
+    border-radius: 10px;
   }
   .nav-links.active {
     display: flex;
@@ -95,30 +104,30 @@ nav a:hover {
 
 /* Seções */
 section {
-  padding: 100px 20px;
+  padding: 100px 100px;
   min-height: 100vh;
 }
 
 #home {
-  background: url("/Tattoo/img/tatooLo.jpeg") center/cover;
+  background: url("/Tattoo/img/tatooLo.jpeg") center/cover no-repeat;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
-  color: white;
-  height: 10rem;
+  color: #fff;
+  height: 2rem;
+  padding: 1rem;
 }
 
 .titulo {
   text-shadow: 2px 2px 5px #a00;
-
+  font-size: 1.6rem;
+  margin: 0;
 }
 
-.titulo h2{
-    font-size: 2rem
-}
 
+/* Seção serviço */
 #services {
   background: #1a1a1a;
   text-align: center;

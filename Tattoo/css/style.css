@@ -34,12 +34,13 @@ header h1 {
   margin-left: 1rem;
   height: 2.5rem;
   width: 120px;
-  display: block;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  transition: all 0.6s ease;
+  opacity: 0.3s ease;
 }
 
 #logo img:hover {
-  transform: scale(1.1) rotate(-3deg); /* cresce e gira levemente */
+  transform: scale(1.1) rotate(-3deg); 
   opacity: 0.9;
 }
 
@@ -47,7 +48,7 @@ header h1 {
 nav {
   display: flex;
   margin-right: 15px;
-  gap: 1rem;
+  gap: 25px;
 }
 
 nav a {
@@ -62,25 +63,36 @@ nav a:hover {
   color: crimson;
 }
 
+.nav-links{
+  display: flex;
+  margin-right: 5rem;
+  box-shadow:  0 0 10px #a00;
+  border-radius: 10px;
+}
+
 
 /* Menu hamburguer */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  gap: 5px;
+  border-radius: 10px;
 }
 
 .hamburger span {
-  background: white;
+  background: #a00;
   height: 3px;
   width: 25px;
   margin: 4px;
   transition: 0.4s;
 }
 
-.nav-links {
-  display: flex;
+.hamburger span:hover{
+  transform: 0.9s;
+  color: #333;
 }
+
 
 @media (max-width: 768px) {
   .nav-links {
@@ -94,13 +106,17 @@ nav a:hover {
     padding: 1rem;
     border-radius: 10px;
   }
+
   .nav-links.active {
     display: flex;
+    box-shadow:  0 0 10px #a00;
   }
+
   .hamburger {
     display: flex;
   }
 }
+
 
 /* Seções */
 section {
@@ -109,20 +125,21 @@ section {
 }
 
 #home {
-  background: url("/Tattoo/img/tatooLo.jpeg") center/cover no-repeat;
+  background: url("/Tattoo/img/tatooLo.jpeg") no-repeat center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #fff;
-  height: 2rem;
+  height: 100vh;
   padding: 1rem;
 }
 
 .titulo {
-  text-shadow: 2px 2px 5px #a00;
-  font-size: 1.6rem;
+  text-shadow: 2px 2px 8px #a00 ;
+  font-size: 3rem;
   margin: 0;
 }
 
@@ -135,18 +152,108 @@ section {
 
 #services h2 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   color: crimson;
+  display: inline-block;
+  border: 4px dotted #a00;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .service-card {
   background: #222;
   margin: 1rem auto;
+  gap: 15px;
   padding: 1.5rem;
   border-radius: 10px;
   width: 80%;
   max-width: 400px;
-  box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+  box-shadow: 0 0 10px rgb(165, 9, 40);
+}
+
+/* Galeria */
+#galeria {
+  text-align: center;
+  background: #1a1a1a;
+}
+
+#galeria h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: crimson;
+  display: inline-block;
+  border: 4px dotted #a00;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.galeria-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.galeria-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #a00; 
+  transition: 0.3s ease; 
+  transform: 0.3s;
+  cursor: pointer;
+}
+
+.galeria-item img {
+  position: relative;
+  width: 100%;
+  height: 180px; 
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.4s ease; 
+}
+
+.galeria-item:hover img {
+  transform: scale(2);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  opacity: 0;
+  z-index: 1000;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  transition: 0.4s;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-conteudo {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #a00;
+}
+
+.fechar {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
 }
 
 /* Cadastro */
@@ -161,12 +268,19 @@ section {
   border-radius: 10px;
   max-width: 500px;
   margin: auto;
-  box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+  box-shadow: 0 0 15px rgb(165, 9, 40);
 }
 
 #cadastro h2 {
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   color: crimson;
+  display: inline-block;
+  border: 4px dotted #a00;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 input,
@@ -206,6 +320,7 @@ button:hover {
 /* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 10%;
   background: #000;
+
 }

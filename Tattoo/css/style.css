@@ -147,7 +147,7 @@ section {
 @media (max-width: 600px) {
   #home {
     font-size: 5vh;
-    width: 50%;
+    width: 5px;
   }
 }
 
@@ -155,16 +155,17 @@ section {
   .titulo h2,
   p {
     font-size: 15px;
-    width: 10%;
+    width: 10px;
   }
 }
 
 /* Seção serviço */
 #services {
-  background: #1a1a1a;
+  background: #111;
   text-align: center;
   padding: 100px 20px;
 }
+
 
 #services h2 {
   font-size: 2rem;

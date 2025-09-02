@@ -26,6 +26,7 @@ header {
 }
 
 header h1 {
+  font-family: wa;
   color: red;
   font-size: 1.5rem;
   margin: 0;
@@ -430,9 +431,7 @@ button:hover {
 /* Slideshow */
 #slide-container {
   overflow: hidden;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
+  width: 800px;
   max-width: 800px;
   gap: 1rem;
   padding: 1rem;
@@ -444,9 +443,9 @@ button:hover {
 /* Galeria de imagens */
 #slideshow {
   display: flex;
-  gap: 5rem; 
+  gap: 1rem; 
   width: calc(200px * 5 + 1rem * 4); 
-  animation: slide 20s alternate infinite ease-in-out;
+  /* animation: slide 20s alternate infinite ease-in-out; */
 }
 
 /* Imagens do slide */
@@ -460,15 +459,14 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   transition:  0.3s ease; 
   box-shadow: 0.3s ease;
-  transform:0.3s ease;
 }
 
 /* Efeito hover */
-#slides img:hover {
+/* #slides img:hover {
   transform: scale(1.08);
   box-shadow: 0 8px 20px rgba(220, 20, 60, 0.6);
   z-index: 1;
-}
+} */
 
 /* Animação */
 @keyframes slide {

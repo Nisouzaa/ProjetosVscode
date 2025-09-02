@@ -72,23 +72,68 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Slideshow
-const slideshow = document.getElementById("slideshow");
-const imagem = document.querySelectorAll("slideshow img");
-
-let index = 0;
-let direcion = 1;
-
-function moveSlide() {
-  const slidWidth = imagem[1].offsetWidth + 16;
-  index += direcion;
-
-  if (index >= imagem.length - 1) {
-    direcion = -1;
-  } else if (index <= 0) {
-    direcion = 1;
+document.addEventListener("DOMContentLoaded", () => {
+  // Aceita #slideshow ou #slides como trilho
+  const track =
+    document.querySelector("#slideshow") || document.querySelector("#slides");
+  if (!track) {
+    console.error("Elemento #slideshow ou #slides não encontrado.");
+    return;
   }
-}
 
-slideshow.style.transform = `translateX(${-index * slideshow}px)`;
+  const images = Array.from(track.querySelectorAll("img"));
+  if (!images.length) {
+    console.error("Nenhuma <img> encontrada dentro do slideshow.");
+    return;
+  }
 
-setInterval(moveSlide, 2000);
+  // Lê o gap definido no CSS (flex gap)
+  const styles = getComputedStyle(track);
+  const gapPx =
+    parseFloat(
+      styles.getPropertyValue("column-gap") ||
+        styles.getPropertyValue("gap") ||
+        "0"
+    ) || 0;
+
+  // Garante que as imagens carregaram (para offsetWidth correto)
+  const waitForImages = (imgs) =>
+    Promise.all(
+      imgs.map((img) =>
+        img.complete
+          ? Promise.resolve()
+          : new Promise((res) =>
+              img.addEventListener("load", res, { once: true })
+            )
+      )
+    );
+
+  waitForImages(images).then(() => {
+    let index = 0;
+    let direction = 1; // 1 = vai; -1 = volta
+    const intervaloMs = 2000;
+
+    // Estilos mínimos para animar suavemente
+    track.style.display = "flex";
+    track.style.transition = "transform 600ms ease-in-out";
+
+    const step = () => {
+      const slideWidth = images[0].offsetWidth + gapPx;
+      index += direction;
+
+      if (index >= images.length - 1) direction = -1;
+      else if (index <= 0) direction = 1;
+
+      track.style.transform = `translateX(${-index * slideWidth}px)`;
+    };
+
+    let timer = setInterval(step, intervaloMs);
+
+    // Pausa ao passar o mouse
+    track.addEventListener("mouseenter", () => clearInterval(timer));
+    track.addEventListener(
+      "mouseleave",
+      () => (timer = setInterval(step, intervaloMs))
+    );
+  });
+});

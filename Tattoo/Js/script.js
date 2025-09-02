@@ -70,3 +70,25 @@ modal.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") fecharModal();
 });
+
+// Slideshow
+const slideshow = document.getElementById("slideshow");
+const imagem = document.querySelectorAll("slideshow img");
+
+let index = 0;
+let direcion = 1;
+
+function moveSlide() {
+  const slidWidth = imagem[1].offsetWidth + 16;
+  index += direcion;
+
+  if (index >= imagem.length - 1) {
+    direcion = -1;
+  } else if (index <= 0) {
+    direcion = 1;
+  }
+}
+
+slideshow.style.transform = `translateX(${-index * slideshow}px)`;
+
+setInterval(moveSlide, 2000);

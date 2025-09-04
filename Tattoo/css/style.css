@@ -141,7 +141,7 @@ section {
   color: #fff;
   text-shadow: 2px 2px 8px #a00;
   font-size: 1.4rem;
-  margin-top: 25rem;
+  margin-top: 29rem;
   justify-items: center;
 }
 
@@ -157,13 +157,14 @@ section {
   .titulo h2 {
     font-size: 3rem;
     text-align: center;
+    margin-top: -100px;
   }
 }
 
 @media (max-width: 768px) {
   .titulo p {
     font-size: 1.2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 0 auto;
   }
 }
 
@@ -171,18 +172,30 @@ section {
 .titulo .btn {
   display: inline-block;
   padding: 12px 15px;
-  background: #333;
-  color: #111;
+  background: rgb(#333, 0, 0, 0.85);
+  color: #a00;
   font-weight: bold;
   border-radius: 10px;
+  border: none;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .titulo .btn:hover {
-  background: rgba(139, 0, 0, 0.445);
-  color: #f5f5f5;
-  box-shadow: #1a1a1a;
+  background: rgba(139, 0, 0, 0.85);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.8); 
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  #home .btn {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 /* Seção serviço */
@@ -223,7 +236,7 @@ section {
 /* Galeria */
 #galeria {
   text-align: center;
-  background: #1a1a1a;
+  background: #111;
 }
 
 #galeria h2 {
@@ -428,14 +441,20 @@ button:hover {
   color: #ff4d6d;
 }
 
+@media (max-width: 768) {
+  #container-post > div {
+    width: 90%;
+  }
+}
+
 /* Slideshow */
 #slide-container {
   overflow: hidden;
   width: 800px;
   max-width: 800px;
-  gap: 1rem;
+  gap: 8rem;
   padding: 1rem;
-  background: #1a1a1a;
+  background: #aaa;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
 }
@@ -443,8 +462,8 @@ button:hover {
 /* Galeria de imagens */
 #slideshow {
   display: flex;
-  gap: 1rem; 
-  width: calc(200px * 5 + 1rem * 4); 
+  gap: 1rem;
+  width: calc(200px * 5 + 1rem * 4);
   /* animation: slide 20s alternate infinite ease-in-out; */
 }
 
@@ -457,7 +476,7 @@ button:hover {
   border-radius: 12px;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  transition:  0.3s ease; 
+  transition: 0.3s ease;
   box-shadow: 0.3s ease;
 }
 

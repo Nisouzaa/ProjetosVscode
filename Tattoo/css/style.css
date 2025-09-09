@@ -493,7 +493,7 @@ button:hover {
     transform: translate3d(0);
   }
   100% {
-    transform: translateX(-880px);
+    transform: translateX(-990px);
   }
   /* 0%,
   15% {
@@ -519,14 +519,18 @@ button:hover {
 
 /* icones  */
 #social-icons {
-  display: contents;
-  text-align: center;
-  position: relative;
-  gap: 10rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  margin: 12px;
+  gap: 1rem;
 }
 
 #social-icons a {
-  color: #a00;
+  display: flex;
+  text-align: center;
+  color: #000;
   font-size: 1.8rem;
   transition: 0.3s;
 }
@@ -540,7 +544,7 @@ button:hover {
 footer {
   text-align: center;
   padding: 30px 10px;
-  background: #000;
+  background: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -552,6 +556,6 @@ footer p {
 }
 
 footer p:hover {
-  transform: scale(1);
+  transform: scale(0.9);
   transition: 0.8s;
 }
